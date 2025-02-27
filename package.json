@@ -18,7 +18,9 @@
     "up": "bun x taze@latest --recursive --update major"
   },
   "dependencies": {
-    "hono": "^4.7.2"
+    "@hono/valibot-validator": "^0.5.2",
+    "hono": "^4.7.2",
+    "valibot": "^1.0.0-rc.2"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
