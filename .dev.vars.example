@@ -1,0 +1,5 @@
+PORT=6969
+ENVIRONMENT="development"
+
+# unset, "verbose", "normal"
+LOGGING="verbose"

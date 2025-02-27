@@ -1,0 +1,46 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  ACTIONS_RUNNER_DEBUG: true
+
+jobs:
+  deploy:
+    name: 'Deploy'
+    timeout-minutes: 3
+    runs-on: ['ubuntu-latest']
+    steps:
+      - name: '🔑 Checkout'
+        uses: actions/checkout@v4
+
+      - name: '🐰 Setup bun'
+        uses: oven-sh/setup-bun@main
+        with:
+          bun-version: 'latest'
+
+      - name: 'Install Dependencies'
+        run: bun install --frozen-lockfile
+
+      - name: 'Lint, Check, Build'
+        run: |
+          bun x @biomejs/biome check . --reporter='github'
+          bun typecheck
+          bun run build
+
+      - name: '🔸 Cloudflare Workers - Deploy'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          bun x wrangler@latest deploy --config='wrangler.jsonc' --env='production' --keep-vars

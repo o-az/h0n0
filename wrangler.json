@@ -1,0 +1,21 @@
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "h0n0",
+  "minify": true,
+  "keep_vars": true,
+  "workers_dev": true,
+  "main": "./src/index.ts",
+  "compatibility_date": "2025-02-26",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "placement": {
+    "mode": "smart"
+  },
+  "dev": {
+    "port": 6969
+  },
+  "observability": {
+    "enabled": true
+  }
+}

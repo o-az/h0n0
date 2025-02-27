@@ -1,0 +1,10 @@
+* text=auto
+.gitattributes !filter !diff
+
+.dev.vars linguist-language=Dotenv
+.dev.vars.example linguist-language=Dotenv
+
+bun.lockb linguist-language=JSON-with-Comments
+biome.json linguist-language=JSON-with-Comments
+tsconfig.json linguist-language=JSON-with-Comments
+.vscode/*.json linguist-language=JSON-with-Comments

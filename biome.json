@@ -1,0 +1,105 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "include": [
+      "*"
+    ],
+    "ignore": [
+      "_",
+      "bun.lock"
+    ],
+    "ignoreUnknown": true
+  },
+  "organizeImports": {
+    "enabled": false
+  },
+  "formatter": {
+    "enabled": true,
+    "indentWidth": 2,
+    "lineWidth": 120,
+    "indentStyle": "space",
+    "ignore": [
+      "_",
+      "bun.lock"
+    ]
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "complexity": {
+        "noBannedTypes": "off",
+        "noUselessConstructor": "off"
+      },
+      "performance": {
+        "noDelete": "off"
+      },
+      "style": {
+        "useTemplate": "off",
+        "noNonNullAssertion": "off",
+        "useNamingConvention": "off",
+        "noUnusedTemplateLiteral": "off"
+      },
+      "suspicious": {
+        "noAssignInExpressions": "off",
+        "noExplicitAny": "off"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "trailingCommas": "all",
+      "semicolons": "asNeeded"
+    }
+  },
+  "json": {
+    "linter": {
+      "enabled": true
+    },
+    "formatter": {
+      "enabled": true,
+      "lineWidth": 1
+    }
+  },
+  "css": {
+    "linter": {
+      "enabled": true
+    },
+    "formatter": {
+      "enabled": true
+    }
+  },
+  "overrides": [
+    {
+      "include": [
+        "*.json",
+        "*.jsonc"
+      ],
+      "formatter": {
+        "lineWidth": 1
+      },
+      "json": {
+        "formatter": {
+          "lineWidth": 1
+        }
+      }
+    },
+    {
+      "include": [
+        "tsconfig.json"
+      ],
+      "json": {
+        "parser": {
+          "allowComments": true,
+          "allowTrailingCommas": true
+        }
+      }
+    }
+  ]
+}
