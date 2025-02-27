@@ -5,16 +5,7 @@ import { HTTPException } from 'hono/http-exception'
 
 import { app } from '#setup.ts'
 
-app.get('/', (context) => {
-  if (context.req.header('User-Agent')?.includes('Mozilla')) {
-    return context.html(html /* html */`
-      <a href="https://github.com/o-az/h0n0">h0n0</a>
-      <br/>
-      <a href="/cat">cat?</a>
-    `)
-  }
-  return context.text('h0n0. Sauce https://github.com/o-az/h0n0')
-})
+app.get('/', (context) => context.text(`h0n0: https://github.com/o-az/h0n0\n\ncat: ${context.req.url}cat`))
 
 const catSchema = v.array(
   v.object({
