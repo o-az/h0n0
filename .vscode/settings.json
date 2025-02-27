@@ -1,0 +1,46 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "biomejs.biome",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "javascript.preferences.autoImportFileExcludePatterns": ["**/index.js"],
+  "typescript.preferences.autoImportFileExcludePatterns": ["**/index.js"],
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "files.exclude": {
+  },
+  "files.associations": {
+    ".env.*": "dotenv",
+    "bun.lock": "jsonc",
+    ".dev.vars": "dotenv",
+    "biome.json": "jsonc",
+    ".vscode/*.json": "jsonc",
+    ".dev.vars.example": "dotenv"
+  },
+  "search.exclude": {
+    "**/_/**": true,
+    "**/dist": true,
+    "bun.lock": true,
+    "**/node_modules": true
+  }
+}
