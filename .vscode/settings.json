@@ -4,8 +4,12 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.preferences.preferTypeOnlyAutoImports": true,
-  "javascript.preferences.autoImportFileExcludePatterns": ["**/index.js"],
-  "typescript.preferences.autoImportFileExcludePatterns": ["**/index.js"],
+  "javascript.preferences.autoImportFileExcludePatterns": [
+    "**/index.js"
+  ],
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "**/index.js"
+  ],
   "[json]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
@@ -27,8 +31,7 @@
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
-  "files.exclude": {
-  },
+  "files.exclude": {},
   "files.associations": {
     ".env.*": "dotenv",
     "bun.lock": "jsonc",
