@@ -1,5 +1,4 @@
 import * as v from 'valibot'
-import { html } from 'hono/html'
 import { proxy } from 'hono/proxy'
 import { HTTPException } from 'hono/http-exception'
 
