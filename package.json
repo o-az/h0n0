@@ -1,6 +1,7 @@
 {
   "name": "h0n0",
   "version": "0.0.1",
+  "type": "module",
   "repository": "github:o-az/h0n0",
   "imports": {
     "#*": "./src/*",
