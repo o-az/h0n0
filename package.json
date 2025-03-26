@@ -12,9 +12,12 @@
     "dev": "wrangler --config='wrangler.json' dev",
     "build": "wrangler --config='wrangler.json' deploy --dry-run",
     "deploy": "wrangler --config='wrangler.json' deploy",
+    "types": "wrangler types --include-runtime='false'",
+    "posttypes": "bun check",
     "format": "biome format . --write",
     "lint": "biome lint . --write --unsafe",
     "check": "biome check . --write --unsafe",
+    "pretypecheck": "bun types",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "up": "bun x taze@latest --recursive --update major"
   },
@@ -23,12 +26,11 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@cloudflare/workers-types": "^4.20250320.0",
     "@total-typescript/ts-reset": "^0.6.1",
-    "@types/bun": "^1.2.5",
-    "@types/node": "^22.13.10",
+    "@types/bun": "^1.2.6",
+    "@types/node": "^22.13.13",
     "typescript": "^5.8.2",
-    "wrangler": "^4.3.0"
+    "wrangler": "^4.5.0"
   },
   "license": "MIT"
 }

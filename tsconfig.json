@@ -35,8 +35,7 @@
     "noPropertyAccessFromIndexSignature": true,
     "types": [
       "bun",
-      "node",
-      "@cloudflare/workers-types"
+      "node"
     ]
   },
   "include": [
@@ -47,7 +46,8 @@
     "reset.d.ts",
     "biome.json",
     "package.json",
-    "wrangler.json"
+    "wrangler.json",
+    "worker-configuration.d.ts"
   ],
   "exclude": [
     "_",
