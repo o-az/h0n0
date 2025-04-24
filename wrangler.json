@@ -5,7 +5,7 @@
   "keep_vars": true,
   "workers_dev": true,
   "main": "./src/index.ts",
-  "compatibility_date": "2025-03-14",
+  "compatibility_date": "2025-04-14",
   "compatibility_flags": [
     "nodejs_compat",
     "nodejs_compat_populate_process_env"

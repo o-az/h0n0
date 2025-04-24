@@ -4,12 +4,6 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.preferences.preferTypeOnlyAutoImports": true,
-  "javascript.preferences.autoImportFileExcludePatterns": [
-    "**/index.js"
-  ],
-  "typescript.preferences.autoImportFileExcludePatterns": [
-    "**/index.js"
-  ],
   "[json]": {
     "editor.defaultFormatter": "biomejs.biome"
   },

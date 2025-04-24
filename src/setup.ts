@@ -33,9 +33,9 @@ app.onError((error, context) => {
   return context.json({ remote, error: error.message, requestId }, 500)
 })
 
-app.notFound((context) => {
+app.notFound(context => {
   throw new HTTPException(404, {
     cause: context.error,
-    message: `${context.req.url} is not a valid path.`,
+    message: `${context.req.url} is not a valid path.`
   })
 })
