@@ -1,13 +1,13 @@
 import { Hono } from 'hono'
+import { getConnInfo } from 'hono/cloudflare-workers'
 import { cors } from 'hono/cors'
 import { csrf } from 'hono/csrf'
-import { logger } from 'hono/logger'
 import { showRoutes } from 'hono/dev'
-import { timeout } from 'hono/timeout'
-import { requestId } from 'hono/request-id'
-import { prettyJSON } from 'hono/pretty-json'
 import { HTTPException } from 'hono/http-exception'
-import { getConnInfo } from 'hono/cloudflare-workers'
+import { logger } from 'hono/logger'
+import { prettyJSON } from 'hono/pretty-json'
+import { requestId } from 'hono/request-id'
+import { timeout } from 'hono/timeout'
 
 import wranglerJSON from '#wrangler.json'
 
@@ -28,7 +28,11 @@ app.use('*', async (context, next) => {
 app.onError((error, context) => {
   const { remote } = getConnInfo(context)
   const requestId = context.get('requestId')
-  console.error([`[${requestId}]`, `-[${remote.address}]`, `-[${context.req.url}]:\n`, `${error.message}`].join(''))
+  console.error(
+    [`[${requestId}]`, `-[${remote.address}]`, `-[${context.req.url}]:\n`, `${error.message}`].join(
+      ''
+    )
+  )
   if (error instanceof HTTPException) return error.getResponse()
   return context.json({ remote, error: error.message, requestId }, 500)
 })

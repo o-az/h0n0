@@ -9,10 +9,11 @@
     "#wrangler.json": "./wrangler.json"
   },
   "scripts": {
-    "dev": "wrangler --config='wrangler.json' dev",
-    "build": "wrangler --config='wrangler.json' deploy --dry-run",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "deploy": "wrangler --config='wrangler.json' deploy",
-    "types": "wrangler types --include-runtime='false'",
+    "types": "wrangler types",
     "posttypes": "bun check",
     "format": "biome format . --write",
     "lint": "biome lint . --write --unsafe",
@@ -22,15 +23,18 @@
     "up": "bun x taze@latest --recursive --update major"
   },
   "dependencies": {
-    "hono": "^4.7.7"
+    "hono": "^4.9.2",
+    "vite": "^7.1.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
+    "@biomejs/biome": "^2.2.0",
+    "@cloudflare/vite-plugin": "^1.11.6",
     "@total-typescript/ts-reset": "^0.6.1",
-    "@types/bun": "^1.2.10",
-    "@types/node": "^22.15.0",
-    "typescript": "^5.8.3",
-    "wrangler": "^4.13.1"
+    "@types/bun": "^1.2.20",
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2",
+    "wrangler": "^4.31.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "bun@1.2.2"
 }

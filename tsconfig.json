@@ -47,6 +47,7 @@
     "biome.json",
     "package.json",
     "wrangler.json",
+    "vite.config.ts",
     "worker-configuration.d.ts"
   ],
   "exclude": [
