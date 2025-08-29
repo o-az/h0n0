@@ -23,18 +23,18 @@
     "up": "bun x taze@latest --recursive --update major"
   },
   "dependencies": {
-    "hono": "^4.9.2",
-    "vite": "^7.1.2"
+    "hono": "^4.9.5",
+    "vite": "npm:rolldown-vite@latest"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.2.0",
-    "@cloudflare/vite-plugin": "^1.11.6",
+    "@biomejs/biome": "^2.2.2",
+    "@cloudflare/vite-plugin": "^1.12.1",
     "@total-typescript/ts-reset": "^0.6.1",
-    "@types/bun": "^1.2.20",
+    "@types/bun": "^1.2.21",
     "@types/node": "^24.3.0",
     "typescript": "^5.9.2",
-    "wrangler": "^4.31.0"
+    "wrangler": "^4.33.1"
   },
   "license": "MIT",
-  "packageManager": "bun@1.2.2"
+  "packageManager": "bun@1.2.21"
 }

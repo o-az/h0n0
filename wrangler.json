@@ -4,7 +4,7 @@
   "keep_vars": true,
   "workers_dev": true,
   "main": "./src/index.ts",
-  "compatibility_date": "2025-08-16",
+  "compatibility_date": "2025-08-29",
   "compatibility_flags": [],
   "placement": {
     "mode": "smart"

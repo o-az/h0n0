@@ -1,13 +1,13 @@
 import { Hono } from 'hono'
-import { getConnInfo } from 'hono/cloudflare-workers'
 import { cors } from 'hono/cors'
 import { csrf } from 'hono/csrf'
-import { showRoutes } from 'hono/dev'
-import { HTTPException } from 'hono/http-exception'
 import { logger } from 'hono/logger'
-import { prettyJSON } from 'hono/pretty-json'
-import { requestId } from 'hono/request-id'
+import { showRoutes } from 'hono/dev'
 import { timeout } from 'hono/timeout'
+import { requestId } from 'hono/request-id'
+import { prettyJSON } from 'hono/pretty-json'
+import { HTTPException } from 'hono/http-exception'
+import { getConnInfo } from 'hono/cloudflare-workers'
 
 import wranglerJSON from '#wrangler.json'
 
@@ -15,7 +15,6 @@ export const app = new Hono<{ Bindings: Env }>()
 
 app.use(csrf())
 app.use('*', timeout(4_000))
-/* append `?pretty` to any request to get prettified JSON */
 app.use(prettyJSON({ space: 2 }))
 app.use('*', requestId({ headerName: `${wranglerJSON.name}-Request-Id` }))
 app.use('*', cors({ origin: '*', allowMethods: ['GET', 'OPTIONS', 'POST', 'HEAD'] }))
@@ -28,10 +27,10 @@ app.use('*', async (context, next) => {
 app.onError((error, context) => {
   const { remote } = getConnInfo(context)
   const requestId = context.get('requestId')
+  const addressSegment =
+    context.env.ENVIRONMENT !== 'production' ? undefined : `-[${remote.address}]`
   console.error(
-    [`[${requestId}]`, `-[${remote.address}]`, `-[${context.req.url}]:\n`, `${error.message}`].join(
-      ''
-    )
+    [`[${requestId}]`, addressSegment, `-[${context.req.url}]:\n`, `${error.message}`].join('')
   )
   if (error instanceof HTTPException) return error.getResponse()
   return context.json({ remote, error: error.message, requestId }, 500)
