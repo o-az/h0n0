@@ -1,6 +1,6 @@
 {
   "name": "h0n0",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "type": "module",
   "repository": "github:o-az/h0n0",
   "imports": {
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "hono": "^4.9.7",
-    "vite": "^7.1.5"
+    "vite": "npm:rolldown-vite@latest"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.4",
