@@ -13,8 +13,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "wrangler --config='wrangler.json' deploy",
-    "types": "wrangler types",
-    "posttypes": "bun check",
+    "types": "wrangler types --env-interface CloudflareBindings",
+    "posttypes": "bun check && bun check",
     "format": "biome format . --write",
     "lint": "biome lint . --write --unsafe",
     "check": "biome check . --write --unsafe",
@@ -23,18 +23,18 @@
     "up": "bun x taze@latest --recursive --update major"
   },
   "dependencies": {
-    "hono": "^4.9.5",
-    "vite": "npm:rolldown-vite@latest"
+    "hono": "^4.9.7",
+    "vite": "^7.1.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.2.2",
-    "@cloudflare/vite-plugin": "^1.12.1",
+    "@biomejs/biome": "^2.2.4",
+    "@cloudflare/vite-plugin": "^1.13.1",
     "@total-typescript/ts-reset": "^0.6.1",
-    "@types/bun": "^1.2.21",
-    "@types/node": "^24.3.0",
+    "@types/bun": "^1.2.22",
+    "@types/node": "^24.4.0",
     "typescript": "^5.9.2",
-    "wrangler": "^4.33.1"
+    "wrangler": "^4.37.0"
   },
   "license": "MIT",
-  "packageManager": "bun@1.2.21"
+  "packageManager": "bun@1.2.22"
 }

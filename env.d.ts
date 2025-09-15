@@ -1,5 +1,5 @@
 interface Env {
-  readonly PORT: number
+  readonly PORT: string
   readonly ENVIRONMENT: 'development' | 'production'
   readonly LOGGING?: 'verbose' | 'normal' | 'silent' | undefined
   /**
@@ -14,7 +14,9 @@ interface Env {
 
 // Node.js `process.env` auto-completion
 declare namespace NodeJS {
-  interface ProcessEnv extends Env {}
+  interface ProcessEnv extends Env {
+    readonly NODE_ENV: 'development' | 'production'
+  }
 }
 
 // Bun/vite `import.meta.env` auto-completion

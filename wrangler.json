@@ -1,10 +1,10 @@
 {
-  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "$schema": "https://esm.sh/wrangler/config-schema.json",
   "name": "h0n0",
   "keep_vars": true,
   "workers_dev": true,
   "main": "./src/index.ts",
-  "compatibility_date": "2025-08-29",
+  "compatibility_date": "2025-09-06",
   "compatibility_flags": [],
   "placement": {
     "mode": "smart"

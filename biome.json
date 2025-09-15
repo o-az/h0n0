@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.2/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -17,8 +17,7 @@
       "**",
       "!_",
       "src/**",
-      "!node_modules",
-      "worker-configuration.d.ts"
+      "!node_modules"
     ],
     "ignoreUnknown": true
   },
@@ -34,14 +33,22 @@
     "includes": [
       "**",
       "!_",
-      "!bun.lock",
-      "!worker-configuration.d.ts"
+      "!bun.lock"
     ]
   },
   "linter": {
+    "includes": [
+      "**",
+      "!_",
+      "!bun.lock",
+      "!node_modules"
+    ],
     "enabled": true,
     "rules": {
       "recommended": true,
+      "correctness": {
+        "noUnusedVariables": "off"
+      },
       "complexity": {
         "noBannedTypes": "off",
         "noStaticOnlyClass": "off",

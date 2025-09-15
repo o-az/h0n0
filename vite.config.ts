@@ -4,6 +4,6 @@ import { cloudflare } from '@cloudflare/vite-plugin'
 export default defineConfig({
   plugins: [cloudflare()],
   server: {
-    port: 6969
+    port: Number(process.env.PORT) || 6969
   }
 })

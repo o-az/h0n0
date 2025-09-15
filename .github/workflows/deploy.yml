@@ -38,6 +38,10 @@ jobs:
           bun typecheck
           bun run build
 
+      - name: 'Set App Version'
+        run: |
+          echo 'APP_VERSION=$(git rev-parse --short HEAD)' >> $GITHUB_ENV
+
       - name: '🔸 Cloudflare Workers - Deploy'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -46,4 +50,5 @@ jobs:
           bun x wrangler@latest deploy \
             --config='wrangler.json' \
             --keep-vars \
-            --var 'ENVIRONMENT:production'
+            --var 'ENVIRONMENT:production' \
+            --var 'APP_VERSION:${APP_VERSION}'

@@ -41,13 +41,17 @@ If you're deploying somewhere else check the following:
 </summary>
 
 1. Remove Cloudflare Workers specific files:
+
     ```shell
     rm .dev.vars .dev.vars.example wrangler.json
     ```
+
 2. Uninstall `@cloudflare/workers-types`:
+
     ```shell
     bun remove @cloudflare/workers-types
     ```
+
 3. Replace `hono/cloudflare-workers` in [src/setup.ts](./src/setup.ts) with the [appropriate adapter](https://hono.dev/docs/helpers/conninfo#conninfo-helper) for your deployment target
 4. Remove `@cloudflare/workers-types` from `"types"` array in [tsconfig.json](./tsconfig.json)
 5. Check [hono.dev](https://hono.dev/docs/getting-started/basic) for deployment instructions
