@@ -52,4 +52,4 @@ jobs:
             --config='wrangler.json' \
             --keep-vars \
             --var 'ENVIRONMENT:production' \
-            --var 'APP_VERSION:${APP_VERSION}'
+            --var 'APP_VERSION:$APP_VERSION'
