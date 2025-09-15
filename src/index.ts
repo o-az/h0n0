@@ -2,9 +2,13 @@ import { proxy } from 'hono/proxy'
 
 import { app } from '#setup.ts'
 
-app.get('/', context =>
-  context.text(`h0n0: https://github.com/o-az/h0n0\n\ncat: ${context.req.url}cat`)
-)
+app.get('/', context => context.json({
+  routes: [
+    '/',
+    '/cat'
+  ],
+  version: context.env.APP_VERSION
+}))
 
 app.get('/cat', async () =>
   proxy('https://api.ai-cats.net/v1/cat', {

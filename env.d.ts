@@ -1,15 +1,10 @@
 interface Env {
   readonly PORT: string
   readonly ENVIRONMENT: 'development' | 'production'
+
   readonly LOGGING?: 'verbose' | 'normal' | 'silent' | undefined
-  /**
-   * Cloudflare Workers.
-   * @example
-   * ```ts
-   * readonly DB: D1Database
-   * readonly KV: KVNamespace
-   * ```
-   */
+
+  readonly APP_VERSION: string
 }
 
 // Node.js `process.env` auto-completion
