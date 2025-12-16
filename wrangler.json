@@ -4,8 +4,10 @@
   "keep_vars": true,
   "workers_dev": true,
   "main": "./src/index.ts",
-  "compatibility_date": "2025-09-06",
-  "compatibility_flags": [],
+  "compatibility_date": "2025-12-10",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
   "placement": {
     "mode": "smart"
   },

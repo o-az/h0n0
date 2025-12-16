@@ -3,8 +3,8 @@
 
 ## Structure
 
-- In [src/setup.ts](./src/setup.ts) we setup helpers, middlewares, and Hono plugins.
-- In [src/index.ts](./src/index.ts) we setup routes.
+- In [src/setup.ts](/src/setup.ts) we setup helpers, middlewares, and Hono plugins.
+- In [src/index.ts](/src/index.ts) we setup routes.
 
 ## Get started
 

@@ -33,10 +33,15 @@ jobs:
       - name: 'Install Dependencies'
         run: bun install --frozen-lockfile
 
+      - name: Setup Biome
+        uses: biomejs/setup-biome@main
+        with:
+          version: latest
+
       - name: 'Lint, Check, Build'
         run: |
-          bun x @biomejs/biome check . --reporter='github'
-          bun typecheck
+          biome ci .         
+          bun check:types
           bun run build
 
       - name: 'Set App Version'
