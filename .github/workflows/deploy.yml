@@ -45,8 +45,8 @@ jobs:
           bun run build
 
       - name: 'Set App Version'
-        run: |
-          echo "APP_VERSION=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+        shell: bash
+        run: echo "APP_VERSION=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: '🔸 Cloudflare Workers - Deploy'
         env:
