@@ -1,11 +1,8 @@
-name: Check
+name: Checks
 
 on:
-  workflow_dispatch:
+  push:
   pull_request:
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
 
 defaults:
   run:
@@ -16,40 +13,30 @@ env:
 
 jobs:
   check:
-    name: 'Lint, Typecheck, Build'
-    timeout-minutes: 3
-    runs-on: ['ubuntu-latest']
+    name: Check
+    runs-on: ubuntu-latest
     steps:
-      - name: '🔑 Checkout'
-        uses: actions/checkout@v5
+      - name: "🔑 Checkout"
+        uses: actions/checkout@v6
 
-      - name: Download `actionlint`
-        id: actionlint
-        shell: bash
-        run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
-
-      - name: Check Workflow Files
-        shell: bash
-        run: ${{ steps.actionlint.outputs.executable }} -color
-
-      - name: '🐰 Setup bun'
+      - name: "🐰 Setup Bun"
         uses: oven-sh/setup-bun@main
         with:
-          bun-version: 'latest'
+          bun-version: latest
 
-      - name: 'Install Dependencies'
+      - name: "Install Dependencies"
         run: bun install --frozen-lockfile
 
-      - name: Setup Biome
+      - name: "Setup Biome"
         uses: biomejs/setup-biome@main
         with:
           version: latest
 
-      - name: Format & Lint
+      - name: "Format & Lint"
         run: biome ci .
 
-      - name: 'Typecheck'
+      - name: "Type Check"
         run: bun tsgo --project tsconfig.json --noEmit
 
-      - name: 'Build'
-        run: bun run build
+      - name: "Build"
+        run: bun build

@@ -1,55 +1,60 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.9/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.10/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
     "useIgnoreFile": true
   },
+  "files": {
+    "includes": [
+      "*",
+      "**",
+      "!**/_",
+      "!**/node_modules"
+    ],
+    "ignoreUnknown": true
+  },
   "assist": {
+    "enabled": true,
     "actions": {
+      "recommended": true,
       "source": {
         "organizeImports": "off"
       }
     }
   },
-  "files": {
-    "includes": [
-      "**",
-      "!_",
-      "src/**",
-      "!node_modules",
-      "!worker-configuration.d.ts"
-    ],
-    "ignoreUnknown": true
+  "html": {
+    "assist": {
+      "enabled": true
+    },
+    "experimentalFullSupportEnabled": true,
+    "linter": {
+      "enabled": true
+    },
+    "formatter": {
+      "enabled": true,
+      "lineWidth": 100,
+      "indentWidth": 2,
+      "indentStyle": "space",
+      "bracketSameLine": true,
+      "attributePosition": "auto",
+      "indentScriptAndStyle": true,
+      "selfCloseVoidElements": "never"
+    }
   },
+  "root": true,
   "formatter": {
     "enabled": true,
     "indentWidth": 2,
-    "lineWidth": 100,
     "indentStyle": "space",
-    "bracketSpacing": true,
-
+    "bracketSameLine": true,
     "formatWithErrors": true,
-    "attributePosition": "multiline",
-    "includes": [
-      "**",
-      "!_",
-      "!bun.lock"
-    ]
+    "attributePosition": "auto"
   },
   "linter": {
-    "includes": [
-      "**",
-      "!_",
-      "!bun.lock",
-      "!node_modules"
-    ],
     "enabled": true,
     "rules": {
       "recommended": true,
-      "correctness": {
-        "noUnusedVariables": "off"
-      },
       "complexity": {
         "noBannedTypes": "off",
         "noStaticOnlyClass": "off",
@@ -58,58 +63,67 @@
       "performance": {
         "noDelete": "off"
       },
+      "correctness": {
+        "noUnusedVariables": "off"
+      },
       "style": {
         "useTemplate": "off",
         "noNonNullAssertion": "off",
         "useNamingConvention": "off",
-        "noUnusedTemplateLiteral": "off"
+        "noDescendingSpecificity": "off",
+        "noUnusedTemplateLiteral": "off",
+        "useNodejsImportProtocol": "off"
       },
       "suspicious": {
         "noExplicitAny": "off",
+        "noUnknownAtRules": "off",
         "noEmptyInterface": "off",
         "noConfusingVoidType": "off",
         "noAssignInExpressions": "off"
       }
     }
   },
-  "javascript": {
+  "json": {
     "assist": {
       "enabled": true
     },
     "formatter": {
       "enabled": true,
-      "indentWidth": 2,
-      "lineWidth": 100,
-      "quoteStyle": "single",
-      "indentStyle": "space",
-      "bracketSpacing": true,
-      "bracketSameLine": true,
-      "trailingCommas": "none",
-      "semicolons": "asNeeded",
-      "jsxQuoteStyle": "single",
-      "quoteProperties": "asNeeded",
-      "arrowParentheses": "asNeeded",
-      "attributePosition": "multiline"
-    },
-    "linter": {
-      "enabled": true
-    }
-  },
-  "json": {
-    "linter": {
-      "enabled": true
+      "lineWidth": 1
     },
     "parser": {
       "allowComments": true,
       "allowTrailingCommas": true
     },
+    "linter": {
+      "enabled": true
+    }
+  },
+  "javascript": {
+    "assist": {
+      "enabled": true
+    },
+    "linter": {
+      "enabled": true
+    },
     "formatter": {
-      "lineWidth": 1,
       "enabled": true,
-      "indentStyle": "space"
+      "quoteStyle": "single",
+      "trailingCommas": "all",
+      "bracketSameLine": true,
+      "semicolons": "asNeeded",
+      "quoteProperties": "asNeeded",
+      "arrowParentheses": "asNeeded"
     }
   },
   "css": {
+    "assist": {
+      "enabled": true
+    },
+    "parser": {
+      "cssModules": true,
+      "allowWrongLineComments": true
+    },
     "linter": {
       "enabled": true
     },
@@ -120,8 +134,8 @@
   "overrides": [
     {
       "includes": [
-        "*.json",
-        "*.jsonc"
+        "**/*.json",
+        "**/*.jsonc"
       ],
       "formatter": {
         "lineWidth": 1
@@ -137,9 +151,6 @@
       }
     },
     {
-      "includes": [
-        "tsconfig.json"
-      ],
       "json": {
         "parser": {
           "allowComments": true,

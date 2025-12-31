@@ -23,12 +23,12 @@ jobs:
     runs-on: ['ubuntu-latest']
     steps:
       - name: '🔑 Checkout'
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
-      - name: '🐰 Setup bun'
+      - name: '🐰 Setup Bun'
         uses: oven-sh/setup-bun@main
         with:
-          bun-version: 'latest'
+          bun-version: latest
 
       - name: 'Install Dependencies'
         run: bun install --frozen-lockfile

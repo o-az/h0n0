@@ -17,7 +17,10 @@ app.use(csrf())
 app.use('*', timeout(4_000))
 app.use(prettyJSON({ space: 2 }))
 app.use('*', requestId({ headerName: `${wranglerJSON.name}-Request-Id` }))
-app.use('*', cors({ origin: '*', allowMethods: ['GET', 'OPTIONS', 'POST', 'HEAD'] }))
+app.use(
+  '*',
+  cors({ origin: '*', allowMethods: ['GET', 'OPTIONS', 'POST', 'HEAD'] }),
+)
 app.use('*', async (context, next) => {
   logger()
   if (context.env.LOGGING === 'verbose') showRoutes(app, { verbose: true })
@@ -28,9 +31,16 @@ app.onError((error, context) => {
   const { remote } = getConnInfo(context)
   const requestId = context.get('requestId')
   const addressSegment =
-    context.env.ENVIRONMENT !== 'production' ? undefined : `-[${remote.address}]`
+    context.env.ENVIRONMENT !== 'production'
+      ? undefined
+      : `-[${remote.address}]`
   console.error(
-    [`[${requestId}]`, addressSegment, `-[${context.req.url}]:\n`, `${error.message}`].join('')
+    [
+      `[${requestId}]`,
+      addressSegment,
+      `-[${context.req.url}]:\n`,
+      `${error.message}`,
+    ].join(''),
   )
   if (error instanceof HTTPException) return error.getResponse()
   return context.json({ remote, error: error.message, requestId }, 500)
@@ -39,6 +49,6 @@ app.onError((error, context) => {
 app.notFound(context => {
   throw new HTTPException(404, {
     cause: context.error,
-    message: `${context.req.url} is not a valid path.`
+    message: `${context.req.url} is not a valid path.`,
   })
 })
