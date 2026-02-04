@@ -6,7 +6,9 @@
     "allowJs": true,
     "checkJs": true,
     "lib": [
-      "ESNext"
+      "DOM",
+      "ESNext",
+      "DOM.Iterable"
     ],
     "target": "ESNext",
     "module": "ESNext",
@@ -17,6 +19,7 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "verbatimModuleSyntax": true,
+    "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
     "moduleResolution": "Bundler",
     "useDefineForClassFields": true,

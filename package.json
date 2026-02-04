@@ -1,8 +1,8 @@
 {
-  "name": "h0n0",
+  "name": "normie-auth",
   "version": "0.0.0",
   "type": "module",
-  "repository": "github:o-az/h0n0",
+  "repository": "github:o-az/normie-auth",
   "imports": {
     "#*": "./src/*",
     "#package.json": "./package.json",
@@ -12,11 +12,10 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "NODE_ENV='production' wrangler --config='wrangler.json' deploy",
-    "types": "wrangler types --env-interface CloudflareBindings",
     "check": "biome check . --write --unsafe",
+    "deploy": "NODE_ENV='production' wrangler deploy",
     "check:types": "bun tsgo --project tsconfig.json --noEmit",
-    "up": "bun x taze@latest --recursive --update major"
+    "types": "wrangler types --env-interface CloudflareBindings"
   },
   "dependencies": {
     "hono": "^4.11.7"
