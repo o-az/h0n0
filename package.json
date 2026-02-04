@@ -28,6 +28,8 @@
     "@types/bun": "^1.3.8",
     "@types/node": "^25.2.0",
     "@typescript/native-preview": "^7.0.0-dev.20260204.1",
+    "oxlint": "^1.43.0",
+    "oxlint-tsgolint": "^0.11.4",
     "typescript": "^5.9.3",
     "vite": "^8.0.0-beta.12",
     "wrangler": "^4.62.0"

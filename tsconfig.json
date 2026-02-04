@@ -6,12 +6,10 @@
     "allowJs": true,
     "checkJs": true,
     "lib": [
-      "DOM",
       "ESNext"
     ],
     "target": "ESNext",
     "module": "ESNext",
-    "jsx": "react-jsx",
     "skipLibCheck": true,
     "alwaysStrict": true,
     "esModuleInterop": true,

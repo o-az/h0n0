@@ -52,3 +52,12 @@ app.notFound(context => {
     message: `${context.req.url} is not a valid path.`,
   })
 })
+
+app.get('/', context =>
+  context.json({
+    routes: ['/', '/cat'],
+    version: context.env.APP_VERSION,
+  }),
+)
+
+export default app satisfies ExportedHandler<Cloudflare.Env>

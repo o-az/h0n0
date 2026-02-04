@@ -9,17 +9,5 @@ export default defineConfig(config => {
     server: {
       port: Number(env.PORT ?? 6969),
     },
-    build: {
-      rolldownOptions: {
-        output: {
-          minify: {
-            compress:
-              config.mode === 'production'
-                ? { dropConsole: true, dropDebugger: true }
-                : undefined,
-          },
-        },
-      },
-    },
   }
 })
