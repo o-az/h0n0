@@ -108,6 +108,7 @@
     },
     "formatter": {
       "enabled": true,
+      "lineWidth": 100,
       "quoteStyle": "single",
       "trailingCommas": "all",
       "bracketSameLine": true,
