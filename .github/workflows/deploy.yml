@@ -18,37 +18,31 @@ env:
 
 jobs:
   deploy:
-    name: 'Deploy'
+    name: "Deploy"
     timeout-minutes: 3
-    runs-on: ['ubuntu-latest']
+    runs-on: ["ubuntu-latest"]
     steps:
-      - name: '🔑 Checkout'
+      - name: "🔑 Checkout"
         uses: actions/checkout@v6
 
-      - name: '🐰 Setup Bun'
+      - name: "🐰 Setup Bun"
         uses: oven-sh/setup-bun@main
         with:
           bun-version: latest
 
-      - name: 'Install Dependencies'
+      - name: "Install Dependencies"
         run: bun install --frozen-lockfile
 
-      - name: Setup Biome
-        uses: biomejs/setup-biome@main
-        with:
-          version: latest
-
-      - name: 'Lint, Check, Build'
+      - name: "Lint, Check, Build"
         run: |
-          biome ci .         
           bun check:types
           bun run build
 
-      - name: 'Set App Version'
+      - name: "Set App Version"
         run: |
           echo "APP_VERSION=$(git rev-parse --short HEAD)" >> "$GITHUB_ENV"
 
-      - name: '🔸 Cloudflare Workers - Deploy'
+      - name: "🔸 Cloudflare Workers - Deploy"
         env:
           APP_VERSION: ${{ env.APP_VERSION }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

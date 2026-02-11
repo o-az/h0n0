@@ -1,0 +1,28 @@
+{
+  "$schema": "https://esm.sh/oxlint/configuration_schema.json",
+  "plugins": ["node", "oxc", "typescript", "promise", "unicorn"],
+  "categories": {
+    "perf": "warn",
+    "style": "warn",
+    "nursery": "warn",
+    "pedantic": "warn",
+    "suspicious": "warn",
+    "correctness": "warn",
+    "restriction": "warn"
+  },
+  "rules": {
+    "oxc/no-async-await": "off",
+    "eslint/sort-imports": "off",
+    "eslint/no-magic-numbers": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-empty-object-type": "off"
+  },
+  "settings": {},
+  "env": {
+    "node": true,
+    "builtin": true,
+    "browser": true
+  },
+  "globals": {},
+  "ignorePatterns": ["_", "dist", "node_modules", "worker-configuration.d.ts"]
+}

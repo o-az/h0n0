@@ -5,11 +5,7 @@
     "noEmit": true,
     "allowJs": true,
     "checkJs": true,
-    "lib": [
-      "DOM",
-      "ESNext",
-      "DOM.Iterable"
-    ],
+    "lib": ["DOM", "ESNext", "DOM.Iterable"],
     "target": "ESNext",
     "module": "ESNext",
     "skipLibCheck": true,
@@ -32,26 +28,9 @@
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "types": [
-      "bun",
-      "node"
-    ]
+    "types": ["bun", "node"]
   },
-  "include": [
-    "src/**/*"
-  ],
-  "files": [
-    "env.d.ts",
-    "reset.d.ts",
-    "biome.json",
-    "package.json",
-    "wrangler.json",
-    "vite.config.ts",
-    "worker-configuration.d.ts"
-  ],
-  "exclude": [
-    "_",
-    "dist",
-    "node_modules"
-  ]
+  "include": ["src/**/*"],
+  "files": ["env.d.ts", "reset.d.ts", "vite.config.ts", "worker-configuration.d.ts"],
+  "exclude": ["_", "dist", "node_modules"]
 }
