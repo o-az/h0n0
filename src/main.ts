@@ -17,7 +17,7 @@ app
       version: context.env.APP_VERSION
     })
   )
-  .get("/cat",  async () =>
+  .get("/cat", async () =>
     proxy("https://api.ai-cats.net/v1/cat", {
       headers: { "Content-Type": "image/jpg" }
     })
