@@ -29,9 +29,9 @@ jobs:
 
       - name: "Format & Lint & Type Check"
         run: |
-          bun x oxfmt@latest --config='oxfmt.config.ts' --write
-          bun x oxlint@latest --config='oxlint.config.ts' --type-aware --type-check --fix-dangerously
-          bun tsgo --project tsconfig.json --noEmit
+          bun format
+          bun lint
+          bun check:types
 
       - name: "Build"
         run: bun run build
