@@ -19,15 +19,18 @@ jobs:
       - name: "🔑 Checkout"
         uses: actions/checkout@v6
 
+      - name: "Setup Node.js"
+        uses: actions/setup-node@v6
+        with:
+          node-version: "latest"
+
       - name: "🐰 Setup Bun"
         uses: oven-sh/setup-bun@main
         with:
           bun-version: latest
 
       - name: "Install Dependencies"
-        run: |
-          bun add --global node@latest
-          bun install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: "Format & Lint & Type Check"
         run: |
