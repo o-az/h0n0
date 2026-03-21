@@ -35,6 +35,7 @@ export default defineConfig({
     }
   ],
   ignorePatterns: [
+    "**/_/**",
     ".agents",
     ".cursor",
     "**/dist/**",

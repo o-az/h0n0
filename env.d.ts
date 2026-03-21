@@ -9,7 +9,7 @@ declare namespace NodeJS {
 }
 
 // Bun/vite `import.meta.env` auto-completion
-interface ImportMetaEnv extends Env {}
+interface ImportMetaEnv extends EnvironmentVariables {}
 
 interface ImportMeta {
   readonly env: ImportMetaEnv
