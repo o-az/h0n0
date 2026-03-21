@@ -40,7 +40,7 @@ jobs:
 
       - name: "Lint, Check, Build"
         run: |
-          bun tsgo --config tsconfig.json --noEmit
+          bun tsgo --project tsconfig.json --noEmit
           bun vite --mode='production' --config='vite.config.ts' build
 
       - name: "Set App Version"
