@@ -10,7 +10,6 @@ defaults:
 
 env:
   ACTIONS_RUNNER_DEBUG: true
-  NODE_OPTIONS: "--experimental-strip-types"
 
 jobs:
   check:
@@ -30,9 +29,9 @@ jobs:
 
       - name: "Format & Lint & Type Check"
         run: |
-          bun format
-          bun lint
-          bun check:types
+          bun --bun oxfmt --config oxfmt.config.ts . --check
+          bun --bun oxlint --config='oxlint.config.ts' --max-warnings=0
+          bun tsgo --config tsconfig.json --noEmit
 
       - name: "Build"
         run: bun run build

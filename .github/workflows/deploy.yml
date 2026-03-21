@@ -15,7 +15,6 @@ defaults:
 
 env:
   ACTIONS_RUNNER_DEBUG: true
-  NODE_OPTIONS: "--experimental-strip-types"
 
 jobs:
   deploy:
@@ -36,8 +35,8 @@ jobs:
 
       - name: "Lint, Check, Build"
         run: |
-          bun check:types
-          bun run build
+          bun tsgo --config tsconfig.json --noEmit
+          bun vite --mode='production' --config='vite.config.ts' build
 
       - name: "Set App Version"
         run: |
