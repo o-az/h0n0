@@ -15,6 +15,7 @@ defaults:
 
 env:
   ACTIONS_RUNNER_DEBUG: true
+  NODE_OPTIONS: "--experimental-strip-types"
 
 jobs:
   deploy:
