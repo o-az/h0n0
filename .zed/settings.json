@@ -1,18 +1,11 @@
 {
   "file_types": {
-    "env": [".env", ".env.*"],
-    "tailwindcss": ["*.css"]
+    "ini": [".npmrc"],
+    "tailwindcss": ["*.css"],
+    "env": [".env", ".env.*"]
   },
-  "hidden_files": ["**/.wrangler", "**/.tanstack", "**/.claude", "**/.cursor", "**/.agents"],
-  "file_scan_exclusions": [
-    "**/.wrangler",
-    "**/.tanstack",
-    "**/.vscode",
-    ".git",
-    "**/.claude",
-    "**/.cursor",
-    "**/.agents"
-  ],
+  "hidden_files": ["**/.wrangler", "**/.agents"],
+  "file_scan_exclusions": [".git", "**/.vscode", "**/.agents", "**/.wrangler"],
   "lsp": {
     "tailwindcss-language-server": {
       "settings": {
@@ -25,7 +18,7 @@
     "oxlint": {
       "initialization_options": {
         "settings": {
-          "configPath": ".oxlintrc.json",
+          "configPath": "oxlint.config.ts",
           "run": "onType",
           "disableNestedConfig": false,
           "fixKind": "safe_fix",
@@ -37,7 +30,7 @@
     "oxfmt": {
       "initialization_options": {
         "settings": {
-          "fmt.configPath": ".oxfmtrc.json",
+          "fmt.configPath": "oxfmt.config.ts",
           "run": "onSave"
         }
       }

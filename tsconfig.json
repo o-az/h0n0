@@ -31,6 +31,12 @@
     "types": ["bun", "node"]
   },
   "include": ["src/**/*"],
-  "files": ["env.d.ts", "reset.d.ts", "vite.config.ts", "worker-configuration.d.ts"],
+  "files": [
+    "env.d.ts",
+    "reset.d.ts",
+    "vite.config.ts",
+    "vitetst.config.ts",
+    "worker-configuration.d.ts"
+  ],
   "exclude": ["_", "dist", "node_modules"]
 }

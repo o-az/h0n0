@@ -14,40 +14,43 @@ defaults:
     shell: bash
 
 env:
+  NODE_ENV: 'production'
   ACTIONS_RUNNER_DEBUG: true
+  WRANGLER_SEND_METRICS: false
+  NODE_OPTIONS: '--disable-warning=ExperimentalWarning --disable-warning=DeprecationWarning'
 
 jobs:
   deploy:
-    name: "Deploy"
+    name: 'Deploy'
     timeout-minutes: 3
-    runs-on: ["ubuntu-latest"]
+    runs-on: ['ubuntu-latest']
     steps:
-      - name: "🔑 Checkout"
+      - name: '🔑 Checkout'
         uses: actions/checkout@v6
 
-      - name: "Setup Node.js"
+      - name: 'Setup Node.js'
         uses: actions/setup-node@v6
         with:
-          node-version: "latest"
+          node-version: 'latest'
 
-      - name: "🐰 Setup Bun"
+      - name: '🐰 Setup Bun'
         uses: oven-sh/setup-bun@main
         with:
           bun-version: latest
 
-      - name: "Install Dependencies"
+      - name: 'Install Dependencies'
         run: bun install --frozen-lockfile
 
-      - name: "Lint, Check, Build"
+      - name: 'Lint, Check, Build'
         run: |
           bun tsgo --project tsconfig.json --noEmit
           bun vite --mode='production' --config='vite.config.ts' build
 
-      - name: "Set App Version"
+      - name: 'Set App Version'
         run: |
           echo "APP_VERSION=$(git rev-parse --short HEAD)" >> "$GITHUB_ENV"
 
-      - name: "🔸 Cloudflare Workers - Deploy"
+      - name: '🔸 Cloudflare Workers - Deploy'
         env:
           APP_VERSION: ${{ env.APP_VERSION }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
