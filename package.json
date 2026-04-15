@@ -19,28 +19,30 @@
     "check": "bun format && bun lint",
     "deploy": "NODE_ENV='production' wrangler deploy",
     "check:types": "bun tsgo --project tsconfig.json --noEmit",
-    "types": "wrangler types --env-interface='CloudflareBindings'"
+    "types": "wrangler types --env-interface='CloudflareBindings' --env-file='.env.example'"
   },
   "dependencies": {
+    "@std/ulid": "npm:@jsr/std__ulid",
     "hono": "^4.12.12",
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.31.0",
-    "@cloudflare/vitest-pool-workers": "^0.14.1",
+    "@cloudflare/vite-plugin": "^1.32.2",
+    "@cloudflare/vitest-pool-workers": "^0.14.6",
+    "@cloudflare/workers-types": "^4.20260414.1",
     "@total-typescript/ts-reset": "^0.6.1",
-    "@types/bun": "^1.3.11",
-    "@types/node": "^25.5.2",
-    "@typescript/native-preview": "^7.0.0-dev.20260407.1",
+    "@types/bun": "^1.3.12",
+    "@types/node": "^25.6.0",
+    "@typescript/native-preview": "^7.0.0-dev.20260414.1",
     "@vitejs/devtools": "^0.1.13",
-    "@vitest/ui": "^4.1.3",
-    "oxfmt": "^0.44.0",
-    "oxlint": "^1.59.0",
-    "oxlint-tsgolint": "^0.20.0",
+    "@vitest/ui": "^4.1.4",
+    "oxfmt": "^0.45.0",
+    "oxlint": "^1.60.0",
+    "oxlint-tsgolint": "^0.21.0",
     "typescript": "^6.0.2",
-    "vite": "^8.0.7",
-    "vitest": "^4.1.3",
-    "wrangler": "^4.80.0"
+    "vite": "^8.0.8",
+    "vitest": "^4.1.4",
+    "wrangler": "^4.82.2"
   },
-  "packageManager": "bun@1.3.11"
+  "packageManager": "bun@1.3.12"
 }

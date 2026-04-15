@@ -8,6 +8,11 @@ declare namespace NodeJS {
   interface ProcessEnv extends EnvironmentVariables {}
 }
 
+// Bun `Bun.env` auto-completion
+declare namespace Bun {
+  interface Env extends EnvironmentVariables {}
+}
+
 // Bun/vite `import.meta.env` auto-completion
 interface ImportMetaEnv extends EnvironmentVariables {}
 
