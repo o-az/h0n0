@@ -3,14 +3,8 @@ import { loadEnv } from 'vite'
 import { defineConfig } from 'vitest/config'
 import { cloudflareTest } from '@cloudflare/vitest-pool-workers'
 
+import { devFlagsSchema } from './vite.config.ts'
 import wranglerJSON from '#wrangler.json' with { type: 'json' }
-
-const enabledSchema = z.stringbool()
-
-const devFlagsSchema = z.object({
-  VITE_DEVTOOLS: z.prefault(enabledSchema, 'false'),
-  VITE_FORWARD_CONSOLE: z.prefault(enabledSchema, 'false')
-})
 
 export default defineConfig(config => {
   const env = loadEnv(config.mode, process.cwd(), '')
