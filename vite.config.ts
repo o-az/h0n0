@@ -4,7 +4,7 @@ import { cloudflare } from '@cloudflare/vite-plugin'
 
 const enabledSchema = z.stringbool()
 
-const devFlagsSchema = z.object({
+export const devFlagsSchema = z.object({
   VITE_DEVTOOLS: z.prefault(enabledSchema, 'false'),
   VITE_FORWARD_CONSOLE: z.prefault(enabledSchema, 'false')
 })

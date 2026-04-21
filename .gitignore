@@ -1,6 +1,12 @@
 # prod
 dist/
 
+# agents
+.pi
+.crush
+.cursor
+.claude
+
 # dev
 .yarn/
 !.yarn/releases
