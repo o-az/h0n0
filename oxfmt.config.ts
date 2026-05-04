@@ -1,8 +1,6 @@
 import { defineConfig } from 'oxfmt'
 
-/**
- * @schema https://esm.sh/oxfmt/configuration_schema.json
- */
+/** @schema https://esm.sh/oxfmt/configuration_schema.json */
 
 export default defineConfig({
   ignorePatterns: ['**/_/**', '.agents', '.cursor', '**/dist/**', '**/node_modules/**'],
@@ -11,6 +9,7 @@ export default defineConfig({
   lineWidth: 100,
   indentWidth: 2,
   printWidth: 100,
+  jsdoc: true,
   singleQuote: true,
   proseWrap: 'never',
   arrowParens: 'avoid',

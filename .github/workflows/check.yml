@@ -2,6 +2,9 @@ name: Checks
 
 on:
   push:
+    branches: # all but main
+      - '*'
+      - '!main'
   pull_request:
 
 defaults:
@@ -10,7 +13,6 @@ defaults:
 
 env:
   NODE_ENV: 'production'
-  ACTIONS_RUNNER_DEBUG: true
   WRANGLER_SEND_METRICS: false
   NODE_OPTIONS: '--disable-warning=ExperimentalWarning --disable-warning=DeprecationWarning'
 
@@ -22,33 +24,5 @@ jobs:
       - name: '🔑 Checkout'
         uses: actions/checkout@v6
 
-      - name: 'Setup Node.js'
-        uses: actions/setup-node@v6
-        with:
-          node-version: 'latest'
-
-      - name: '🐰 Setup Bun'
-        uses: oven-sh/setup-bun@main
-        with:
-          bun-version: latest
-
-      - name: 'Install Dependencies'
-        run: bun install --frozen-lockfile
-
-      - name: 'Format & Lint & Type Check'
-        run: |
-          bun --bun oxfmt --config oxfmt.config.ts . --check
-          bun --bun oxlint \
-            --config='oxlint.config.ts' \
-            --type-check \
-            --type-aware \
-            --max-warnings=0 \
-            --report-unused-disable-directives \
-            --format='github'
-          bun tsgo --project tsconfig.json --noEmit
-
-      - name: 'Build'
-        run: bun run build
-
-      - name: 'Test'
-        run: bun vitest --run
+      - name: Checks
+        run: .github/actions/checks

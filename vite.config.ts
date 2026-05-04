@@ -1,6 +1,12 @@
 import * as z from 'zod/mini'
 import { defineConfig, loadEnv } from 'vite'
 import { cloudflare } from '@cloudflare/vite-plugin'
+import * as NodeChildProcess from 'node:child_process'
+
+const COMMIT_SHA = NodeChildProcess.execSync('git rev-parse --short HEAD')
+  .toString()
+  .trim()
+  .slice(0, 7)
 
 const enabledSchema = z.stringbool()
 
@@ -23,6 +29,9 @@ export default defineConfig(config => {
     server: {
       port: Number(env.PORT ?? 69_69),
       forwardConsole: devFlags.VITE_FORWARD_CONSOLE
+    },
+    define: {
+      COMMIT_SHA: JSON.stringify(COMMIT_SHA)
     }
   }
 })

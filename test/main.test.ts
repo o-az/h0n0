@@ -12,7 +12,7 @@ describe('App root route', () => {
     expect(response.status).toBe(200)
     expect(await response.json()).toEqual({
       routes: ['/', '/cat'],
-      version: env.APP_VERSION
+      version: env.COMMIT_SHA
     })
   })
 })

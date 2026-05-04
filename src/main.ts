@@ -8,22 +8,19 @@ import { requestId } from 'hono/request-id'
 import { prettyJSON } from 'hono/pretty-json'
 
 export const app = new Hono<{ Bindings: Cloudflare.Env }>()
-
-app.use(csrf())
-app.use(prettyJSON())
-app.use('*', timeout(5_000))
-app.use(
-  requestId({
-    headerName: 'X-H0N0-Request-ID',
-    generator: () => ulid()
-  })
-)
-
-app
+  .use(csrf())
+  .use(prettyJSON())
+  .use('*', timeout(5_000))
+  .use(
+    requestId({
+      headerName: 'X-H0N0-Request-ID',
+      generator: () => ulid()
+    })
+  )
   .get('/', context =>
     context.json({
       routes: ['/', '/cat'],
-      version: context.env.APP_VERSION
+      version: context.env.COMMIT_SHA
     })
   )
   .get('/cat', async () =>

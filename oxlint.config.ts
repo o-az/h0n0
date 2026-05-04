@@ -1,8 +1,6 @@
 import { defineConfig } from 'oxlint'
 
-/**
- * @schema https://esm.sh/oxlint/configuration_schema.json
- */
+/** @schema https://esm.sh/oxlint/configuration_schema.json */
 
 export default defineConfig({
   plugins: [
