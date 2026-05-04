@@ -30,9 +30,3 @@ describe('App cat proxy route', () => {
     ])
   })
 })
-
-// describe('App type definitions', () => {
-//   test('Should have correct type definitions', () => {
-//     expectTypeOf(app).toEqualTypeOf<ExportedHandler<Cloudflare.Env>>()
-//   })
-// })
