@@ -43,7 +43,7 @@
     "oxlint": {
       "initialization_options": {
         "settings": {
-          "configPath": "oxlint.config.ts",
+          "configPath": null,
           "run": "onType",
           "disableNestedConfig": false,
           "fixKind": "safe_fix",
@@ -55,8 +55,8 @@
     "oxfmt": {
       "initialization_options": {
         "settings": {
-          "fmt.configPath": "oxfmt.config.ts",
-          "run": "onSave"
+          "run": "onSave",
+          "fmt.configPath": null
         }
       }
     }
@@ -215,6 +215,9 @@
           "language_server": {
             "name": "oxfmt"
           }
+        },
+        {
+          "code_action": "source.fixAll.oxc"
         }
       ]
     },
