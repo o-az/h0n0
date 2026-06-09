@@ -44,6 +44,8 @@
     "env.d.ts",
     "reset.d.ts",
     "vite.config.ts",
+    "oxfmt.config.ts",
+    "oxlint.config.ts",
     "vitest.config.ts",
     "worker-configuration.d.ts"
   ],
