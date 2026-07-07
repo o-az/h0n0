@@ -14,12 +14,13 @@ defaults:
   run:
     shell: bash
 
-permissions: {}
-
 env:
   NODE_ENV: 'production'
+  MISE_EXPERIMENTAL: true
   WRANGLER_SEND_METRICS: false
   NODE_OPTIONS: '--disable-warning=ExperimentalWarning --disable-warning=DeprecationWarning'
+
+permissions: {}
 
 jobs:
   deploy:

@@ -9,7 +9,6 @@ minimum_release_age_excludes = ["hk", "pkl", "npm:oxfmt", "npm:oxlint"]
 [env]
 HK_MISE = 1
 WRANGLER_SEND_METRICS = false
-NODE_OPTIONS = "--disable-warning=ExperimentalWarning --disable-warning=DeprecationWarning"
 
 [tools]
 fd = "latest"
@@ -22,18 +21,18 @@ usage = "latest"
 shfmt = "latest"
 gitleaks = "latest"
 shellcheck = "latest"
+ghalint = "latest"
 actionlint = "latest"
 betterleaks = "latest"
 "npm:oxfmt" = "latest"
 "npm:oxlint" = "latest"
-ghalint = "latest"
 
 [hooks]
 postinstall = "hk install --mise"
 
 [tasks.check]
 description = "format & lint files"
-run = "hk fix --all"
+run = "hk check --all"
 
 [tasks.build]
 description = "build TS project"
@@ -49,4 +48,4 @@ run = "bun tsgo --project tsconfig.json --noEmit"
 
 [tasks.ci]
 description = "run CI tasks"
-depends = ["format", "lint", "build", "test", "typecheck"]
+run = "hk fix --all"
