@@ -6,6 +6,8 @@ import "package://github.com/jdx/hk/releases/download/v1.50.0/hk@1.50.0#/Builtin
 mise = true
 
 local linters = new Mapping<String, Step> {
+  ["ghalint-action"] = Builtins.ghalint_action
+  ["ghalint-workflow"] = Builtins.ghalint_workflow
   ["actionlint"] = (Builtins.actionlint) {
     glob =
       List(

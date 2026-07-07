@@ -26,6 +26,7 @@ actionlint = "latest"
 betterleaks = "latest"
 "npm:oxfmt" = "latest"
 "npm:oxlint" = "latest"
+ghalint = "latest"
 
 [hooks]
 postinstall = "hk install --mise"
