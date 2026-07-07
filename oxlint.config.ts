@@ -1,18 +1,16 @@
 import { defineConfig } from 'oxlint'
 
-/** @schema https://esm.sh/oxlint/configuration_schema.json */
-
 export default defineConfig({
   plugins: [
     'oxc',
-    'react',
+    'jsdoc',
     'node',
+    'import',
     'eslint',
     'vitest',
     'unicorn',
     'promise',
-    'typescript',
-    'react-perf'
+    'typescript'
   ],
   options: {
     typeCheck: true,
@@ -39,7 +37,6 @@ export default defineConfig({
   ignorePatterns: [
     '**/_/**',
     '.agents',
-    '.cursor',
     '**/dist/**',
     '**/node_modules/**',
     'worker-configuration.d.ts'

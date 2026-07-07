@@ -1,14 +1,15 @@
 {
   "file_types": {
     "ini": [
-      ".npmrc"
-    ],
-    "tailwindcss": [
-      "*.css"
+      "**/.npmrc"
     ],
     "env": [
       ".env",
       ".env.*"
+    ],
+    "JSONC": [
+      "**/wrangler.json",
+      "**/.zed/**/*.json"
     ]
   },
   "hidden_files": [
@@ -17,33 +18,30 @@
   ],
   "file_scan_exclusions": [
     ".git",
-    "**/.vscode",
     "**/.agents",
+    "**/.vscode",
     "**/.wrangler"
   ],
   "lsp": {
-    "tailwindcss-language-server": {
-      "settings": {
-        "classFunctions": [
-          "cva",
-          "cx",
-          "twMerge",
-          "class",
-          "tw\\.[a-z-]+",
-          "cn",
-          "clsx"
+    "tombi": {
+      "fetch": {
+        "pre_release": true
+      },
+      "binary": {
+        "arguments": [
+          "lsp",
+          "-v"
         ],
-        "experimental": {
-          "classRegex": [
-            "(?:cls|class|className|classList)\\s\\:\\=\\s\"([^\"]*)"
-          ]
-        }
+        "env": {
+          "NO_COLOR": "true"
+        },
+        "ignore_system_version": false
       }
     },
     "oxlint": {
       "initialization_options": {
         "settings": {
-          "configPath": null,
+          "configPath": "oxlint.config.ts",
           "run": "onType",
           "disableNestedConfig": false,
           "fixKind": "safe_fix",
@@ -55,13 +53,25 @@
     "oxfmt": {
       "initialization_options": {
         "settings": {
-          "run": "onSave",
-          "fmt.configPath": null
+          "fmt.configPath": "oxfmt.config.ts",
+          "run": "onSave"
         }
       }
     }
   },
   "languages": {
+    "TOML": {
+      "format_on_save": "on",
+      "language_servers": [
+        "tombi"
+      ],
+      "show_edit_predictions": false,
+      "formatter": {
+        "language_server": {
+          "name": "tombi"
+        }
+      }
+    },
     "CSS": {
       "format_on_save": "on",
       "prettier": {
@@ -80,24 +90,6 @@
       "language_servers": [
         "oxc"
       ],
-      "prettier": {
-        "allowed": false
-      },
-      "formatter": [
-        {
-          "language_server": {
-            "name": "oxfmt"
-          }
-        }
-      ]
-    },
-    "MDX": {
-      "language_servers": [
-        "typescript-language-server",
-        "oxfmt",
-        "oxlint"
-      ],
-      "format_on_save": "on",
       "prettier": {
         "allowed": false
       },
@@ -215,9 +207,6 @@
           "language_server": {
             "name": "oxfmt"
           }
-        },
-        {
-          "code_action": "source.fixAll.oxc"
         }
       ]
     },
