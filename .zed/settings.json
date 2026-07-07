@@ -13,16 +13,29 @@
     ]
   },
   "hidden_files": [
-    "**/.wrangler",
-    "**/.agents"
+    "**/.wrangler"
   ],
   "file_scan_exclusions": [
     ".git",
-    "**/.agents",
     "**/.vscode",
     "**/.wrangler"
   ],
+  "use_autoclose": true,
+  "enable_language_server": true,
+  "formatter": "language_server",
+  "prettier": {
+    "allowed": false
+  },
+  "use_auto_surround": true,
   "lsp": {
+    "pkl": {
+      "fetch": {
+        "pre_release": true
+      },
+      "binary": {
+        "ignore_system_version": false
+      }
+    },
     "tombi": {
       "fetch": {
         "pre_release": true
@@ -60,6 +73,11 @@
     }
   },
   "languages": {
+    "Pkl": {
+      "language_servers": [
+        "pkl"
+      ]
+    },
     "TOML": {
       "format_on_save": "on",
       "language_servers": [
@@ -88,7 +106,10 @@
     "HTML": {
       "format_on_save": "on",
       "language_servers": [
-        "oxc"
+        "html-language-server",
+        "oxfmt",
+        "oxlint",
+        "!biome"
       ],
       "prettier": {
         "allowed": false

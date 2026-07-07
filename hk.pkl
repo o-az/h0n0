@@ -1,0 +1,60 @@
+amends "package://github.com/jdx/hk/releases/download/v1.50.0/hk@1.50.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.50.0/hk@1.50.0#/Builtins.pkl"
+
+// https://hk.jdx.dev/configuration.html
+
+mise = true
+
+local linters = new Mapping<String, Step> {
+  ["actionlint"] = (Builtins.actionlint) {
+    glob =
+      List(
+        ".github/workflows/*.yml",
+        ".github/workflows/*.yaml",
+      )
+  }
+  ["betterleaks"] = Builtins.betterleaks
+  ["gitleaks"] = (Builtins.gitleaks) {
+    check = "gitleaks git --staged --redact --config .github/.gitleaks.toml --verbose --no-banner"
+  }
+  ["tombi"] = Builtins.tombi
+  ["oxlint"] = (Builtins.ox_lint) {
+    check = "oxlint --config='oxlint.config.ts' --type-aware --type-check"
+  }
+  ["shellcheck"] = Builtins.shellcheck
+}
+
+local formatters = new Mapping<String, Step> {
+  ["pkl-format"] = (Builtins.pkl_format) {
+    glob = List("*.pkl", "**/*.pkl")
+  }
+  ["shfmt"] = Builtins.shfmt
+  ["just-fmt"] = (Builtins.just_format) {
+    glob = List("justfile", "**/*.just")
+    check = "just --fmt --check --unstable"
+    fix = "just --fmt --unstable"
+  }
+  ["oxfmt"] = Builtins.oxfmt
+  ["tombi-format"] = Builtins.tombi_format
+}
+
+local allSteps = (formatters) {
+  for (name, step in linters) {
+    [name] = step
+  }
+}
+
+hooks {
+  ["pre-commit"] {
+    fix = true
+    stash = "git"
+    steps = allSteps
+  }
+  ["fix"] {
+    fix = true
+    steps = allSteps
+  }
+  ["check"] {
+    steps = allSteps
+  }
+}

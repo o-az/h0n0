@@ -13,16 +13,24 @@ defaults:
 
 env:
   NODE_ENV: 'production'
+  MISE_EXPERIMENTAL: true
   WRANGLER_SEND_METRICS: false
   NODE_OPTIONS: '--disable-warning=ExperimentalWarning --disable-warning=DeprecationWarning'
+
+permissions: {}
 
 jobs:
   check:
     name: Check
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
     steps:
       - name: '🔑 Checkout'
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
 
       - name: Checks
         run: .github/actions/checks
