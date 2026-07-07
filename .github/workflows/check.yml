@@ -33,4 +33,4 @@ jobs:
           persist-credentials: false
 
       - name: Checks
-        run: .github/actions/checks
+        uses: ./.github/actions/checks
