@@ -1,9 +1,10 @@
-amends "package://github.com/jdx/hk/releases/download/v1.50.0/hk@1.50.0#/Config.pkl"
-import "package://github.com/jdx/hk/releases/download/v1.50.0/hk@1.50.0#/Builtins.pkl"
+amends "package://github.com/jdx/hk/releases/download/v1.51.0/hk@1.51.0#/Config.pkl"
+
+import "package://github.com/jdx/hk/releases/download/v1.51.0/hk@1.51.0#/Builtins.pkl"
 
 // https://hk.jdx.dev/configuration.html
 
-mise = true
+walk_ignore = true
 
 local linters = new Mapping<String, Step> {
   ["ghalint-action"] = Builtins.ghalint_action
@@ -21,7 +22,8 @@ local linters = new Mapping<String, Step> {
   }
   ["tombi"] = Builtins.tombi
   ["oxlint"] = (Builtins.ox_lint) {
-    check = "oxlint --config='oxlint.config.ts' --type-aware --type-check"
+    check = "bun x oxlint --deny-warnings --config='oxlint.config.ts'"
+    fix = "bun x oxlint --deny-warnings --fix --config='oxlint.config.ts'"
   }
   ["shellcheck"] = Builtins.shellcheck
 }
@@ -30,14 +32,24 @@ local formatters = new Mapping<String, Step> {
   ["pkl-format"] = (Builtins.pkl_format) {
     glob = List("*.pkl", "**/*.pkl")
   }
-  ["shfmt"] = Builtins.shfmt
   ["just-fmt"] = (Builtins.just_format) {
     glob = List("justfile", "**/*.just")
     check = "just --fmt --check --unstable"
     fix = "just --fmt --unstable"
   }
-  ["oxfmt"] = Builtins.oxfmt
-  ["tombi-format"] = Builtins.tombi_format
+  ["shfmt"] = Builtins.shfmt
+  ["oxfmt"] = (Builtins.oxfmt) {
+    exclude = List("*.toml")
+    check = "bun x oxfmt --check {{ files }}"
+    check_list_files = "bun x oxfmt --list-different {{ files }}"
+    fix = "bun x oxfmt --write {{ files }}"
+  }
+  // tombi --diff is ANSI stderr, not git-applyable; use plain check + fix
+  ["tombi-format"] = (Builtins.tombi_format) {
+    check_diff = null
+    check = "tombi format --check {{ files }}"
+    fix = "tombi format {{ files }}"
+  }
 }
 
 local allSteps = (formatters) {
@@ -45,18 +57,19 @@ local allSteps = (formatters) {
     [name] = step
   }
 }
-
 hooks {
   ["pre-commit"] {
     fix = true
     stash = "git"
     steps = allSteps
   }
+  // formatters only — `just fmt` / `hk fix --all`
   ["fix"] {
     fix = true
-    steps = allSteps
+    steps = formatters
   }
+  // linters only — `just lint` / `hk check --all`
   ["check"] {
-    steps = allSteps
+    steps = linters
   }
 }
