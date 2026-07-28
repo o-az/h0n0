@@ -20,7 +20,7 @@ export const app = new Hono<{ Bindings: Cloudflare.Env }>()
   .get('/', context =>
     context.json({
       routes: ['/', '/cat'],
-      version: context.env.COMMIT_SHA
+      version: typeof __COMMIT_SHA__ === 'undefined' ? context.env.COMMIT_SHA : __COMMIT_SHA__
     })
   )
   .get('/cat', async () =>

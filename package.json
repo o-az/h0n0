@@ -23,25 +23,25 @@
   },
   "dependencies": {
     "@std/ulid": "npm:@jsr/std__ulid",
-    "hono": "^4.12.31",
+    "hono": "^4.12.32",
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.45.1",
-    "@cloudflare/vitest-pool-workers": "^0.18.6",
-    "@cloudflare/workers-types": "^5.20260721.1",
+    "@cloudflare/vite-plugin": "^1.47.0",
+    "@cloudflare/vitest-pool-workers": "^0.18.8",
+    "@cloudflare/workers-types": "^5.20260728.1",
     "@total-typescript/ts-reset": "^0.6.1",
     "@types/bun": "^1.3.14",
-    "@types/node": "^26.1.1",
-    "@vitejs/devtools": "^0.4.1",
+    "@types/node": "^26.1.2",
+    "@vitejs/devtools": "^0.4.9",
     "@vitest/ui": "^4.1.10",
-    "oxfmt": "^0.59.0",
-    "oxlint": "^1.74.0",
-    "oxlint-tsgolint": "^0.25.0",
+    "oxfmt": "^0.61.0",
+    "oxlint": "^1.76.0",
+    "oxlint-tsgolint": "^7.0.2001",
     "typescript": "^7.0.2",
     "vite": "^8.1.5",
     "vitest": "^4.1.10",
-    "wrangler": "^4.112.0"
+    "wrangler": "^4.114.0"
   },
   "packageManager": "bun@1.3.14"
 }
