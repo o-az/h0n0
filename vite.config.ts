@@ -31,7 +31,7 @@ export default defineConfig(config => {
       forwardConsole: devFlags.VITE_FORWARD_CONSOLE
     },
     define: {
-      COMMIT_SHA: JSON.stringify(COMMIT_SHA)
+      __COMMIT_SHA__: JSON.stringify(COMMIT_SHA)
     }
   }
 })

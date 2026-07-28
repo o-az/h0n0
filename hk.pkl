@@ -1,14 +1,17 @@
-amends "package://github.com/jdx/hk/releases/download/v1.51.0/hk@1.51.0#/Config.pkl"
+amends "package://github.com/jdx/hk/releases/download/v1.53.0/hk@1.53.0#/Config.pkl"
 
-import "package://github.com/jdx/hk/releases/download/v1.51.0/hk@1.51.0#/Builtins.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.53.0/hk@1.53.0#/Builtins.pkl"
 
 // https://hk.jdx.dev/configuration.html
 
 walk_ignore = true
 
 local linters = new Mapping<String, Step> {
+  ["pkl"] = Builtins.pkl
   ["ghalint-action"] = Builtins.ghalint_action
-  ["ghalint-workflow"] = Builtins.ghalint_workflow
+  ["ghalint-workflow"] = (Builtins.ghalint_workflow) {
+    check = "ghalint run --config .github/.ghalint.yml"
+  }
   ["actionlint"] = (Builtins.actionlint) {
     glob =
       List(

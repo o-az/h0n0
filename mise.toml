@@ -21,7 +21,6 @@ HK_MISE = 1
 WRANGLER_SEND_METRICS = false
 
 [tools]
-fd = "latest"
 hk = "latest"
 pkl = "latest"
 bun = "latest"
