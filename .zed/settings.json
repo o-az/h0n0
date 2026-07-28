@@ -28,16 +28,15 @@
   },
   "use_auto_surround": true,
   "language_servers": [
-    "pkl",
-
     "!vtsls",
     "!biome",
     "!eslint",
     "!typescript-language-server",
-    "typescript-ls",
+    "pkl",
     "tombi",
     "oxfmt",
     "oxlint",
+    "typescript-ls",
     "markdown-oxide",
     "html-language-server",
     "json-language-server",
@@ -287,6 +286,9 @@
       ]
     },
     "TypeScript": {
+      "inlay_hints": {
+        "enabled": false
+      },
       "format_on_save": "on",
       "language_servers": [
         "typescript-ls",
