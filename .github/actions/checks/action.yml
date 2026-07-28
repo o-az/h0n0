@@ -11,7 +11,11 @@ runs:
 
     - name: 'Install Dependencies'
       shell: bash
-      run: bun install --frozen-lockfile
+      run: |
+        bun install --frozen-lockfile
+        mise install
+      env:
+        NO_COLOR: 1
 
     - name: 'Run CI Tasks'
       shell: bash

@@ -2,9 +2,19 @@
 
 [settings]
 color = true
+pipx.uvx = true
 experimental = true
 color_theme = "charm"
-minimum_release_age_excludes = ["hk", "pkl", "npm:oxfmt", "npm:oxlint"]
+minimum_release_age_excludes = [
+  "hk",
+  "pkl",
+  "bun",
+  "node",
+  "sqlite",
+  "npm:oxfmt",
+  "npm:oxlint",
+  "github:nubjs/nub"
+]
 
 [env]
 HK_MISE = 1
@@ -19,16 +29,22 @@ node = "latest"
 tombi = "latest"
 usage = "latest"
 shfmt = "latest"
+ghalint = "latest"
 gitleaks = "latest"
 shellcheck = "latest"
-ghalint = "latest"
 actionlint = "latest"
 betterleaks = "latest"
 "npm:oxfmt" = "latest"
 "npm:oxlint" = "latest"
+"github:nubjs/nub" = "latest"
 
 [hooks]
 postinstall = "hk install --mise"
+
+[tasks.ci]
+description = "run CI tasks"
+depends = ["build", "typecheck"]
+run = "hk fix --all && hk check --all"
 
 [tasks.check]
 description = "format & lint files"
@@ -44,8 +60,4 @@ run = 'bun vitest --config="vitest.config.ts" --run'
 
 [tasks.typecheck]
 description = "type check JS/TS files"
-run = "bun tsgo --project tsconfig.json --noEmit"
-
-[tasks.ci]
-description = "run CI tasks"
-run = "hk fix --all"
+run = "bun tsc --project tsconfig.json --noEmit"

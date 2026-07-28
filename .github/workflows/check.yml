@@ -13,6 +13,7 @@ defaults:
 
 env:
   NODE_ENV: 'production'
+  MISE_HTTP_TIMEOUT: 120
   MISE_EXPERIMENTAL: true
   WRANGLER_SEND_METRICS: false
   NODE_OPTIONS: '--disable-warning=ExperimentalWarning --disable-warning=DeprecationWarning'
