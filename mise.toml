@@ -5,16 +5,7 @@ color = true
 pipx.uvx = true
 experimental = true
 color_theme = "charm"
-minimum_release_age_excludes = [
-  "hk",
-  "pkl",
-  "bun",
-  "node",
-  "sqlite",
-  "npm:oxfmt",
-  "npm:oxlint",
-  "github:nubjs/nub"
-]
+minimum_release_age_excludes = ["hk", "pkl", "bun", "node", "sqlite", "npm:oxfmt", "npm:oxlint", "github:nubjs/nub"]
 
 [env]
 HK_MISE = 1
